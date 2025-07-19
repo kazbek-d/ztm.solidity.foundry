@@ -16,9 +16,23 @@ https://book.getfoundry.sh/
 ## Usage
 
 ### Install
+To install Foundry, run the following commands. First, download and execute the installation script using `curl`:
+
+```shell
 curl -L https://foundry.paradigm.xyz | bash
+```
+
+Then, source your shell configuration file to apply the changes:
+
+```shell
 source /Users/kazbek/.bashrc
+```
+
+Finally, update Foundry to ensure you have the latest version:
+
+```shell
 foundryup
+```
 
 
 ### Build
