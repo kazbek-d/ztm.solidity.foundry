@@ -26,6 +26,7 @@ Then, source your shell configuration file to apply the changes:
 
 ```shell
 source /Users/kazbek/.bashrc
+source /Users/anzhela/.zshenv'
 ```
 
 Finally, update Foundry to ensure you have the latest version:
