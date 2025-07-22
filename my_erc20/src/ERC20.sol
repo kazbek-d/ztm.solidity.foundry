@@ -54,14 +54,14 @@ contract ERC20 {
         return true;
     } 
 
-    function _mint(address to, uint256 amount) private {
+    function _mint(address to, uint256 amount) internal {
         balancesOf[to] += amount;
         _totalSupply +=amount;
 
         emit Transfer(address(0), to, amount);
     }
 
-    function _burn(address from, uint256 amount) private {
+    function _burn(address from, uint256 amount) internal {
         balancesOf[from] -= amount;
         _totalSupply -= amount;
 
