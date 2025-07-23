@@ -10,17 +10,19 @@ contract Erc20Test is ERC20, Test {
   address private bob;
 
   constructor() ERC20("name", "SYM", 18) {}
-  
+
   function setUp() public {
     alice = makeAddr("alice");
     bob = makeAddr("bob");
 
-    _mint(alice, 200);
+    _mint(alice, 200e18);
   }
 
   function testTransferTokensCorrectly() public virtual {
     vm.prank(alice);
-    this.transfer(bob, 100);
+    bool success = this.transfer(bob, 100e18);
+    assertTrue(success, "Transfer should succeed");
+    assertEq(balancesOf[alice], 100e18, "Aalice's balance should be 100 after transfer");
   }
 
 }
