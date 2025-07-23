@@ -10,10 +10,12 @@ contract Erc20Test is ERC20, Test {
   address private bob;
 
   constructor() ERC20("name", "SYM", 18) {}
-
+  
   function setUp() public {
     alice = makeAddr("alice");
     bob = makeAddr("bob");
+
+    _mint(alice, 200);
   }
 
   function testTransferTokensCorrectly() public virtual {
