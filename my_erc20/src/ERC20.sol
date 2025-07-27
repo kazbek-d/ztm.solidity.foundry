@@ -5,9 +5,6 @@ contract ERC20 {
     event Transfer(address indexed from, address indexed to, uint256 value);
     event Approval(address indexed owner, address spender, uint256 value);
 
-    address public constant feeAddress =
-        address(0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db);
-
     string public name; // ERC20
     string public symbol; // ERC20
     uint8 public immutable decimals; // 18
@@ -33,14 +30,10 @@ contract ERC20 {
             "ERC20: Insufficient sender balance"
         );
 
-        uint256 fee = amount / 100;
-
-        emit Transfer(from, to, amount - fee);
-        emit Transfer(from, feeAddress, fee);
+        emit Transfer(from, to, amount);
 
         balancesOf[from] -= amount;
-        balancesOf[to] += amount - fee;
-        balancesOf[feeAddress] += fee;
+        balancesOf[to] += amount;
 
         return true;
     }
