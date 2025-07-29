@@ -18,6 +18,7 @@ contract BaseSetup is ERC20, Test {
         _mint(alice, 300e18);
 
         // TODO: check why deal is not working
+        //vm.deal(alice, 300e18);
         //deal(address(this), alice, 300e18);
     }
 }
@@ -31,7 +32,6 @@ contract Erc20TransferTest is BaseSetup {
         vm.prank(alice);
         bool success = this.transfer(bob, 100e18);
         assertTrue(success, "Transfer should succeed");
-
         assertEqDecimal(this.balancesOf(alice), 200e18, decimals);
         assertEqDecimal(this.balancesOf(bob), 100e18, decimals);
     }
@@ -40,5 +40,13 @@ contract Erc20TransferTest is BaseSetup {
         vm.prank(alice);
         vm.expectRevert("ERC20: Insufficient sender balance");
         this.transfer(bob, 400e18);
+    }
+
+    function testEmitsTransferEvent() public {
+        vm.expectEmit(true, true, true, true);
+        emit Transfer(alice, bob, 100e18);
+
+        vm.prank(alice);
+        this.transfer(bob, 100e18);
     }
 }
