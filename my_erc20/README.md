@@ -70,6 +70,9 @@ $ anvil
 
 ```shell
 $ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
+
+$ source .env
+$ forge script script/ERC20.s.sol:ERC20Script --rpc-url $SEPOLIA_RPC_URL --broadcast --verify
 ```
 
 ### Cast
