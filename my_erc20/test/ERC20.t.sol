@@ -8,7 +8,7 @@ contract BaseSetup is ERC20, Test {
     address internal alice;
     address internal bob;
 
-    constructor() ERC20("name", "SYM", 18) {}
+    constructor() ERC20(address(0), "name", "SYM", 18) {}
 
     function setUp() public virtual {
         alice = makeAddr("alice");

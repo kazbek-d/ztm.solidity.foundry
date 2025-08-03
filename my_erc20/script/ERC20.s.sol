@@ -13,7 +13,12 @@ contract ERC20Script is Script {
 
         vm.startBroadcast(key);
 
-        new ERC20("Name", "SYM", 18);
+        new ERC20(
+            address(0x8512af8A8eAD7deE9d9F451a0f8C4876faE72BF1),
+            "Name",
+            "SYM",
+            18
+        );
 
         vm.stopBroadcast();
     }

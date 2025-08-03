@@ -2,6 +2,11 @@
 pragma solidity 0.8.30;
 
 contract ERC20 {
+    modifier onlyOwner() {
+        require(msg.sender == owner, "ERC20: Must be token owner");
+        _;
+    }
+
     event Transfer(address indexed from, address indexed to, uint256 value);
     event Approval(address indexed owner, address spender, uint256 value);
 
@@ -10,11 +15,18 @@ contract ERC20 {
     uint8 public immutable decimals; // 18
 
     uint256 internal _totalSupply;
+    address public owner;
 
     mapping(address => uint256) public balancesOf;
     mapping(address => mapping(address => uint256)) public allowance;
 
-    constructor(string memory _name, string memory _symbol, uint8 _decimals) {
+    constructor(
+        address _owner,
+        string memory _name,
+        string memory _symbol,
+        uint8 _decimals
+    ) {
+        owner = _owner;
         name = _name;
         symbol = _symbol;
         decimals = _decimals;
@@ -77,5 +89,13 @@ contract ERC20 {
         _totalSupply -= amount;
 
         emit Transfer(from, address(0), amount);
+    }
+
+    function deposit(uint256 amount) external payable onlyOwner {
+        _mint(msg.sender, amount);
+    }
+
+    function redeem(uint256 amount) external onlyOwner {
+        _burn(msg.sender, amount);
     }
 }
