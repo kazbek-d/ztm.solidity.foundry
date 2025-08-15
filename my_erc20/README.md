@@ -88,3 +88,30 @@ $ forge --help
 $ anvil --help
 $ cast --help
 ```
+
+
+### bash history
+```shell
+$ curl -L https://foundry.paradigm.xyz | bash
+$ brew install libusb
+$ curl -L https://foundry.paradigm.xyz | bash
+$ source /Users/anzhela/.zshenv
+$ foundryup
+$ forge test
+$ forge build
+$ forge test
+$ forge build
+$ forge test
+$ git config --global user.name "Anzhela DZARASOVA"
+$ git config --global user.email "angelas82@list.ru"
+$ forge build
+$ forge test
+$ forge test -vv
+$ forge test -vvv
+$ forge test -vvvv
+$ forge test -vvvvv
+$ clear
+$ source .env
+$ echo $SEPOLIA_RPC_URL
+$ forge script script/ERC20.s.sol:ERC20Script --rpc-url $SEPOLIA_RPC_URL --broadcast --verify
+```
